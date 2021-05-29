@@ -1,0 +1,6 @@
+framework module Pods_dx_hacks {
+  umbrella header "Pods-dx-hacks-umbrella.h"
+
+  export *
+  module * { export * }
+}
