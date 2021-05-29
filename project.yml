@@ -1,0 +1,16 @@
+name: dx-hacks
+fileGroups:
+  - configs
+configFiles:
+  Debug: configs/Debug.xcconfig
+  Release: configs/Release.xcconfig
+targets:
+  dx-hacks:
+    type: application
+    platform: iOS
+    sources: dx-hacks
+    configFiles:
+      Debug: configs/dx-hacks-Debug.xcconfig
+      Release: configs/dx-hacks-Release.xcconfig
+    settings:
+      CURRENT_PROJECT_VERSION: 1
