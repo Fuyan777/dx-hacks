@@ -8,8 +8,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
-  - kintone-ios-sdk
-  - PromisesSwift
+  - kintone-ios-sdk (~> 0.3.2)
+  - PromisesSwift (~> 1.2.6)
 
 SPEC REPOS:
   trunk:
@@ -24,6 +24,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   PromisesSwift: 64085cf6e5fc1b5001f90cf31e87a1f1621fefee
 
-PODFILE CHECKSUM: 2435fbdf8aae0fb281f303218c4a1eb09632aab3
+PODFILE CHECKSUM: 1490742e7fb190cd100f6a37c772f511d0ee0f3b
 
 COCOAPODS: 1.10.1
