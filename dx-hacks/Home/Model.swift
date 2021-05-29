@@ -27,7 +27,8 @@ class Model {
             
             // Init Connection without "guest space ID"
             let kintoneConnection = Connection(domain, kintoneAuth)
-            
+        
+            var fileTestRecord: Dictionary<String, FieldValue> = [:]
             // Init Record Module
             let kintoneRecord = Record(kintoneConnection)
             
@@ -57,6 +58,17 @@ class Model {
         let kintoneConnection = Connection(domain, kintoneAuth)
         
         let fileManager = File(kintoneConnection)
-        
+        let recordManager = Record(kintoneConnection)
+        var fieldCode = "SINGLE_LINE_TEXT"
+        var fileTestRecord: Dictionary<String, FieldValue> = [:]
+        var field = FieldValue()
+        field.setType(FieldType.SINGLE_LINE_TEXT)
+        field.setValue("testDownloadSuccessForSingleFile")
+        fileTestRecord[fieldCode] = field
+        let testBundle = Bundle(for: type(of: self))
+        guard let upload_file_path = testBundle.url(forResource: "test", withExtension: "txt") else {
+            return
+        }
     }
+    
 }

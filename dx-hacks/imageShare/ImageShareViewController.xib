@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageShareViewController" customModule="dx_hacks" customModuleProvider="target">
             <connections>
+                <outlet property="shareImageVIew" destination="Iy1-d5-jYP" id="vOP-q4-YJg"/>
+                <outlet property="titleLabel" destination="NXY-IU-2ed" id="eCu-la-IGu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
