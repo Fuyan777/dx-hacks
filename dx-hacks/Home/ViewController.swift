@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     var isTapped = false
     let motionManager = CMMotionManager()
+    let motionWriter = MotionWriter()
     let model = Model()
     
     override func viewDidLoad() {
@@ -65,19 +66,40 @@ class ViewController: UIViewController {
 
         motionManager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler: { (motion, error) in
             guard let motion = motion, error == nil else { return }
-
-            print("attitude pitch: \(motion.attitude.pitch * 180 / Double.pi)")
-            print("attitude roll : \(motion.attitude.roll * 180 / Double.pi)")
-            print("attitude yaw  : \(motion.attitude.yaw * 180 / Double.pi)")
-            let sensorPitch = motion.attitude.pitch * 180 / Double.pi
-            let sensorRoll = motion.attitude.roll * 180 / Double.pi
-            let sensorYaw = motion.attitude.yaw * 180 / Double.pi
             
-            if sensorYaw < -100 {
+            // gyro
+//            print("attitude pitch: \(motion.attitude.pitch * 180 / Double.pi)")
+//            print("attitude roll : \(motion.attitude.roll * 180 / Double.pi)")
+//            print("attitude yaw  : \(motion.attitude.yaw * 180 / Double.pi)")
+//            let sensorPitch = motion.attitude.pitch * 180 / Double.pi
+//            let sensorRoll = motion.attitude.roll * 180 / Double.pi
+//            let sensorYaw = motion.attitude.yaw * 180 / Double.pi
+            
+            // motion
+//            print("attitude x: \(motion.userAcceleration.x)")
+            print("attitude y : \(motion.userAcceleration.y)")
+//            print("attitude z  : \(motion.userAcceleration.z)")
+            
+            let sensorX = motion.userAcceleration.x
+            let sensorY = motion.userAcceleration.y
+            let sensorZ = motion.userAcceleration.z
+            
+            /*
+             x: 水平
+             y: 垂直
+             z: 奥行き
+             */
+            let thresholdX = 1.0
+            let thresholdY = -1.5
+            
+            // 基本動作
+            if sensorX > thresholdX {
                 self.moveImageShareYaw()
-            } else if sensorRoll < -100 {
+            } else if sensorY < thresholdY {
                 self.moveImageShareRoll()
             }
+            
+            // ハート型（WIP）
         })
     }
     
