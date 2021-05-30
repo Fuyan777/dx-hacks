@@ -15,6 +15,11 @@ class ViewController: UIViewController {
             actionButton.addTarget(self, action: #selector(tappedAction), for: .touchUpInside)
         }
     }
+    @IBOutlet weak var selectedImageButton: UIButton! {
+        didSet {
+            selectedImageButton.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
+        }
+    }
     
     var isTapped = false
     let motionManager = CMMotionManager()
@@ -34,19 +39,25 @@ class ViewController: UIViewController {
             // ストップ
             isTapped = false
             
-            titleLabel.text = "モーションブレイク"
-            actionButton.setTitle("START", for: .normal)
+            titleLabel.text = "モーションブレイク\nはじめよう！"
+            actionButton.setImage(UIImage(named: "start_button"), for: .normal)
             motionManager.stopDeviceMotionUpdates()
         } else {
             // スタート発火
             isTapped = true
             
             titleLabel.text = "モーション！！！"
-            actionButton.setTitle("STOP", for: .normal)
+            actionButton.setImage(UIImage(named: "stop_button"), for: .normal)
             
             // motion開始
             startMotion()
         }
+    }
+    
+    @objc func shareAction() {
+        // imageSelectedVCへの画面遷移
+        let imageSelected = ImageSelectedViewController()
+        self.present(imageSelected, animated: true, completion: nil)
     }
     
     func startMotion() {
@@ -107,7 +118,7 @@ extension ViewController: UIAdaptivePresentationControllerDelegate {
     // dismissで戻ってきた際の処理
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         isTapped = false
-        titleLabel.text = "モーションブレイク"
-        actionButton.setTitle("START", for: .normal)
+        titleLabel.text = "モーションブレイク\nはじめよう！"
+        actionButton.setImage(UIImage(named: "start_button"), for: .normal)
     }
 }

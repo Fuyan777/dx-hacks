@@ -9,5 +9,6 @@ target 'dx-hacks' do
   pod 'Alamofire', '~> 5.2'
   pod 'PromisesSwift', '~> 1.2.6'
   pod 'kintone-ios-sdk', '~> 0.3.2'
+  pod "PromiseKit", "~> 6.8"
 
 end

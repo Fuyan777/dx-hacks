@@ -2,6 +2,15 @@ PODS:
   - Alamofire (5.4.3)
   - kintone-ios-sdk (0.3.2):
     - PromisesSwift (~> 1.2.6)
+  - PromiseKit (6.15.3):
+    - PromiseKit/CorePromise (= 6.15.3)
+    - PromiseKit/Foundation (= 6.15.3)
+    - PromiseKit/UIKit (= 6.15.3)
+  - PromiseKit/CorePromise (6.15.3)
+  - PromiseKit/Foundation (6.15.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.15.3):
+    - PromiseKit/CorePromise
   - PromisesObjC (1.2.12)
   - PromisesSwift (1.2.12):
     - PromisesObjC (= 1.2.12)
@@ -9,21 +18,24 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - kintone-ios-sdk (~> 0.3.2)
+  - PromiseKit (~> 6.8)
   - PromisesSwift (~> 1.2.6)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - kintone-ios-sdk
+    - PromiseKit
     - PromisesObjC
     - PromisesSwift
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   kintone-ios-sdk: f2314f440c5365312cc6e730a9b14f0195e317eb
+  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   PromisesSwift: 64085cf6e5fc1b5001f90cf31e87a1f1621fefee
 
-PODFILE CHECKSUM: 1490742e7fb190cd100f6a37c772f511d0ee0f3b
+PODFILE CHECKSUM: 160c78a9445c865c1de7ce02b24c3603c084327f
 
 COCOAPODS: 1.10.1
