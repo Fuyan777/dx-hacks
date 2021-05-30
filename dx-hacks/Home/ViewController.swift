@@ -77,8 +77,8 @@ class ViewController: UIViewController {
             
             // motion
 //            print("attitude x: \(motion.userAcceleration.x)")
-            print("attitude y : \(motion.userAcceleration.y)")
-//            print("attitude z  : \(motion.userAcceleration.z)")
+//            print("attitude y : \(motion.userAcceleration.y)")
+            print("attitude z  : \(motion.userAcceleration.z)")
             
             let sensorX = motion.userAcceleration.x
             let sensorY = motion.userAcceleration.y
@@ -89,17 +89,28 @@ class ViewController: UIViewController {
              y: 垂直
              z: 奥行き
              */
-            let thresholdX = 1.0
-            let thresholdY = -1.5
+            let thresholdX = 0.6
+            let thresholdY = -0.8
+            let thresholdZ = -1.0
             
             // 基本動作
-            if sensorX > thresholdX {
+//            if sensorX > thresholdX {
+//                self.moveImageShareYaw()
+//            } else if sensorY < thresholdY {
+//                self.moveImageShareRoll()
+//            }
+            
+            // 押し出す動作
+            if sensorZ < thresholdZ {
                 self.moveImageShareYaw()
-            } else if sensorY < thresholdY {
-                self.moveImageShareRoll()
             }
             
             // ハート型（WIP）
+            if sensorY < thresholdY {
+                if sensorX > thresholdX {
+                    self.moveImageShareLove()
+                }
+            }
         })
     }
     
@@ -128,6 +139,20 @@ class ViewController: UIViewController {
         let imageShareVC = ImageShareViewController(
             imageData: UIImage(named: "wanko") ?? UIImage(),
             text: "うちのワンチャン"
+        )
+        imageShareVC.presentationController?.delegate = self
+        self.present(imageShareVC, animated: true, completion: nil)
+    }
+
+    // 写真共有の際の画面遷移(Roll)
+    func moveImageShareLove() {
+        motionManager.stopDeviceMotionUpdates()
+        isTapped = false
+        
+        // imageShareVCへの画面遷移（Roll）
+        let imageShareVC = ImageShareViewController(
+            imageData: UIImage(named: "love") ?? UIImage(),
+            text: "ラブ"
         )
         imageShareVC.presentationController?.delegate = self
         self.present(imageShareVC, animated: true, completion: nil)
