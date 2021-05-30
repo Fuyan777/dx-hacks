@@ -47,7 +47,7 @@ class ViewController: UIViewController {
             // スタート発火
             isTapped = true
             
-            titleLabel.text = "モーション！！！"
+            titleLabel.text = "モーション送信中..."
             actionButton.setImage(UIImage(named: "stop_button"), for: .normal)
             
             // motion開始
